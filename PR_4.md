@@ -24,6 +24,7 @@ Notes:
 - [ ] Don't forget to update the README.md with the steps to reproduce to run the API (inside the docker container)
 - [ ] Finalize the README.md so you include all the instructions presented initially
 - [ ] (Make sure the REAMDE.md is not the initial one from the template)
+- [ ] Check that there are no TODOs left in the code!
 - [ ] Help - For the `docker run` command, bind the ports as follows: `-p 0.0.0.0:8000:8001 -p 0.0.0.0:4200:4201`
 
 ___
