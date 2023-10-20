@@ -1,11 +1,12 @@
 Before working on this branch, include your previous work from steps 1, 2 and 3 (which have been merged to the main branch) in your branch:
 
 ```bash
-git checkout main
-git pull
 git checkout 4/deploy_model_api
-git rebase main
+git pull origin master
+git push
 ```
+
+> Note: you can also use a `rebase` if you are familiar with this command.
 
 The goal of this PR is to:
 
