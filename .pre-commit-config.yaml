@@ -13,22 +13,22 @@ repos:
       - id: black
         name: Formatting (black)
         entry: black
-        types: [python]
-        language: system
+        language: python
+        types_or: [python, pyi, jupyter]
+        additional_dependencies: [".[jupyter]"]
       - id: isort
         name: Sorting imports (isort)
         entry: isort
         types: [python]
         language: system
-      - id: ruff
+      - id: ruff # TODO - remove this if you chose not to use ruff (must have one of ruff or flake8)
         name: Linting (ruff)
         entry: ruff
         types: [python]
         language: system
-      - id: nbstripout
-        name: Strip Jupyter notebook output (nbstripout)
-        entry: nbstripout
-        types: [file]
-        files: (.ipynb)$
+      - id: flake8 # TODO - remove this if you chose not to use flake8 (must have one of ruff or flake8)
+        name: Linting (flake8)
+        entry: flake8
+        types: [python]
         language: system
 exclude: ^(.svn|CVS|.bzr|.hg|.git|__pycache__|.tox|.ipynb_checkpoints|assets|tests/assets/|venv/|.venv/)
