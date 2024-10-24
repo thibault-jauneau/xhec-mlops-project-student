@@ -2,11 +2,10 @@
 
 # xhec-mlops-project-student
 
-[![Python Version](https://img.shields.io/badge/python-3.9%20%7C%203.10-blue.svg)]()
+[![Python Version](https://img.shields.io/badge/python-3.10-blue.svg)]()
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
-[![Linting: ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-informational?logo=pre-commit&logoColor=white)](https://github.com/artefactory/xhec-mlops-project-student/blob/main/.pre-commit-config.yaml)
 
 </div>
@@ -175,8 +174,7 @@ The training pipeline consists of the following tasks:
    To build the Docker image for this project, run the following command from the root directory of the project (where the Dockerfile is located):
 
    ```bash
-   docker build -f Dockerfile.app -t abalone-prediction-app .
-
+   docker buildx build -f Dockerfile.app -t abalone-prediction-app .
    ```
 2. **Running the Docker container**
 
