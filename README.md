@@ -116,7 +116,7 @@ Run:
 pre-commit install
 ```
 
-## Model Training with Prefect
+## Model Training with Prefect and MLFlow
 
 ### Prerequisites
 
@@ -126,10 +126,11 @@ prefect server start
 ```
 You can access the Prefect UI at http://localhost:4200
 
-2. Start a Prefect worker in another terminal:
+2. Start an MLFlow server in another terminal:
 ```bash
-prefect worker start -p default-agent-pool
+mlflow server
 ```
+You can access the MLflow UI at http://127.0.0.1:5000
 
 ### Training the Model
 
@@ -175,14 +176,14 @@ The training pipeline consists of the following tasks:
 
    ```bash
    docker build -f Dockerfile.app .
-
+   ```
 2. **Running the Docker container**
 
    To run the app inside a Docker container, use the following command:
 
    ```bash
    docker run -d -p 8000:8000 --name abalone-prediction abalone-prediction-app
-
+   ```
 
 
 
