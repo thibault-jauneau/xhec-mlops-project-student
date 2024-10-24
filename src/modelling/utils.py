@@ -1,8 +1,13 @@
-# Use this module to code a `pickle_object` function. This will be useful to pickle the model (and encoder if need be).
 import pickle
 
 
 def pickle_object(obj, file_path):
-    """Pickle the given object to the specified file path."""
+    """
+    Pickle and save the given object to the specified file path.
+
+    Args:
+        obj: The object to be pickled.
+        file_path (str): The path where the pickled object will be saved.
+    """
     with open(file_path, "wb") as f:
         pickle.dump(obj, f)
