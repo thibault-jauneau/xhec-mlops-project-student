@@ -22,9 +22,19 @@ def preprocess_data(df: pd.DataFrame):
     # Create the target variable 'Age' by adding a constant to 'Rings'
     df["Age"] = df["Rings"] + 1.5
 
+    df = df.rename(
+        columns={
+            "Whole weight": "wholeweight",
+            "Shucked weight": "shuckedweight",
+            "Viscera weight": "visceraweight",
+            "Shell weight": "shellweight",
+        }
+    )
+    df.columns = [x.lower() for x in df.columns]
+
     # Drop unnecessary columns from the dataset
-    X = df.drop(columns=["Rings", "Age", "Sex"])
-    y = df["Age"]
+    X = df.drop(columns=["rings", "age", "sex"])
+    y = df["age"]
 
     # Split the dataset into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(
