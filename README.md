@@ -8,6 +8,7 @@
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 [![Linting: ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![Pre-commit](https://img.shields.io/badge/pre--commit-enabled-informational?logo=pre-commit&logoColor=white)](https://github.com/artefactory/xhec-mlops-project-student/blob/main/.pre-commit-config.yaml)
+
 </div>
 
 This repository has for purpose to industrialize the [Abalone age prediction](https://www.kaggle.com/datasets/rodolfomendes/abalone-dataset) Kaggle contest.
@@ -26,11 +27,13 @@ You can download the dataset on the [Kaggle page](https://www.kaggle.com/dataset
 ## Setup
 
 ### Python version
-* Supported version : <strong>3.10</strong> <br>
+
+- Supported version : <strong>3.10</strong> <br>
 
 Please make sure you have this version installed to be able to run the app on your machine.
 
 ### Create a virtual environment
+
 To contribute to or run the app, you will need to use a virtual environment.
 
 If you have a Miniconda installed:
@@ -52,6 +55,7 @@ $ conda activate envname
 ```
 
 Or with virtualenv:
+
 ```
 # Install virtualenv package
 $ pip install virtualenv
@@ -70,7 +74,7 @@ You need to install all the dependencies in order to be able to run the app.
 
 #### Virtualenv
 
-With virtualenv, there is two files: ```requirements.txt``` that contains dependencies to run the app (which you need to install either way), and ```requirements-dev.txt``` with dependencies to dev on the app (not required if you only plan to run the app).
+With virtualenv, there is two files: `requirements.txt` that contains dependencies to run the app (which you need to install either way), and `requirements-dev.txt` with dependencies to dev on the app (not required if you only plan to run the app).
 
 ```
 $ source venv/bin/activate  # Activate env
@@ -85,7 +89,7 @@ $ source venv/bin/activate  # Activate env
 (venv) $ pip install -r requirements-dev.txt
 ```
 
-If you need to amend the dependencies of the project, then don't forget to add them to the ```requirements.in``` and/or ```requirements-dev.in``` files before.
+If you need to amend the dependencies of the project, then don't forget to add them to the `requirements.in` and/or `requirements-dev.in` files before.
 
 #### Conda
 
@@ -112,6 +116,14 @@ Run:
 pre-commit install
 ```
 
+## How to generate the pickle file with the model
+
+From the root folder, run in the terminal:
+
+```
+$ python src\modelling\main.py data\abalone.csv
+```
+
 ## Table of Contents
 
 - [xhec-mlops-project-student](#xhec-mlops-project-student)
@@ -130,13 +142,16 @@ pre-commit install
 The deliverable of this project is a copy of this repository with the industrialization of the Abalone age prediction model. We expect to see:
 
 1. a workflow to train a model using Prefect
+
 - The workflows to train the model and to make the inference (prediction of the age of abalone) are in separate modules and use Prefect `flow` and `task` objects
 - The code to get the trained model and encoder is in a separate module and must be reproducible (not necessarily in a docker container)
+
 2. a Prefect deployment to retrain the model regularly
 3. an API that runs on a local app and that allows users to make predictions on new data
-  - A working API which can be used to make predictions on new data
-    - The API can run on a docker container
-    - The API has validation on input data (use Pydantic)
+
+- A working API which can be used to make predictions on new data
+  - The API can run on a docker container
+  - The API has validation on input data (use Pydantic)
 
 ### Evaluation
 
@@ -147,21 +162,23 @@ Each of your pull requests will be graded based on the following criteria:
   - naming conventions
   - use of docstrings and type hinting
 - **Formatting**
+
   - respect of clear code conventions
 
-  *P.S. you can use a linter and automatic code formatters to help you with that*
+  _P.S. you can use a linter and automatic code formatters to help you with that_
 
 - Proper **Functioning** of the code
   - the code must run without bugs
 
 Bseides the evaluation of the pull requests, we will also evaluate:
+
 - **Reproducibility** and clarity of instructions to run the code (we will actually try to run your code)
   - Having a clear README.md with
     - the context of the project
     - the name of the participants and their github users
     - the steps to recreate the Python environment
     - the instructions to run all parts of the code
-- Use of *Pull Requests* (see below) to coordinate your collaboration
+- Use of _Pull Requests_ (see below) to coordinate your collaboration
 
 ## Steps to reproduce to build the deliverable
 
@@ -186,14 +203,15 @@ You can follow the order of the branches to build your project and collaborate.
 - Add the different members of your group as admin to your forked repository
 - Follow the order of the numbered branches and for each branch:
   - Read the PR_i.md (where i is the number of the branch) file to understand the task to perform
-   > [!NOTE]
-   > Dont forget to integrate your work from past branches (except for when working on branch #1 obviously (!))
-   > ```bash
-   > git checkout branch_number_i
-   > git pull origin master
-   > # At this point, you might have a VIM window opening, you can close it using the command ":wq"
-   > git push
-   > ```
+    > [!NOTE]
+    > Dont forget to integrate your work from past branches (except for when working on branch #1 obviously (!))
+    >
+    > ```bash
+    > git checkout branch_number_i
+    > git pull origin master
+    > # At this point, you might have a VIM window opening, you can close it using the command ":wq"
+    > git push
+    > ```
     - Read and **follow** all the instructions in the the PR instructions file
     - Do as many commits as necessary on the branch_number_i to perform the task indicated in the corresponding markdown file
     - Open **A SINGLE** pull request from this branch to the main branch of your forked repository
@@ -201,7 +219,7 @@ You can follow the order of the branches to build your project and collaborate.
 
 ### Pull requests in this project
 
-Github [Pull Requests](https://docs.github.com/articles/about-pull-requests) are a way to propose changes to a repository. They have for purpose to integrate the work of *feature branches* into the main branch of the repository, with a collaborative review process.
+Github [Pull Requests](https://docs.github.com/articles/about-pull-requests) are a way to propose changes to a repository. They have for purpose to integrate the work of _feature branches_ into the main branch of the repository, with a collaborative review process.
 
 **PR tips:**
 
