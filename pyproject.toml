@@ -15,7 +15,7 @@ authors = [
 description = "This repository contains the solution for the X-HEC MLOps Project on the industrialization of Abalone age prediction model."
 version = "0.0.1"
 readme = "README.md"
-requires-python = "3.10" 
+requires-python = "3.10"
 
 [project.urls]
 "Homepage" = "https://github.com/thibault-jauneau/xhec-mlops-project-student"
