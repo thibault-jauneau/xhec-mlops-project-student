@@ -23,6 +23,95 @@ You can download the dataset on the [Kaggle page](https://www.kaggle.com/dataset
 
 </details>
 
+## Setup
+
+### Python version
+* Supported version : <strong>3.10</strong> <br>
+
+Please make sure you have this version installed to be able to run the app on your machine.
+
+### Create a virtual environment
+To contribute to or run the app, you will need to use a virtual environment.
+
+If you have a Miniconda installed:
+
+```
+# Create env
+$ cd <this repository>
+$ conda env create --file environment.yml
+
+# Activate your environment:
+$ conda activate envname
+
+# Check python:
+(envname) $ which python # Unix
+(envname) $ where python # Windows
+
+# In order to stop using this virtual environment:
+(envname) $ deactivate
+```
+
+Or with virtualenv:
+```
+# Install virtualenv package
+$ pip install virtualenv
+
+# Create the virtual environment
+$ virtualenv venv --python=python3.10
+
+# Activate it
+$ source venv/Scripts/activate  # Windows
+$ source venv/bin/activate  # Unix
+```
+
+### Handle dependencies
+
+You need to install all the dependencies in order to be able to run the app.
+
+#### Virtualenv
+
+With virtualenv, there is two files: ```requirements.txt``` that contains dependencies to run the app (which you need to install either way), and ```requirements-dev.txt``` with dependencies to dev on the app (not required if you only plan to run the app).
+
+```
+$ source venv/bin/activate  # Activate env
+(venv) $ pip install -r requirements.txt
+```
+
+Or if you want to contribute:
+
+```
+$ source venv/bin/activate  # Activate env
+(venv) $ pip install -r requirements.txt
+(venv) $ pip install -r requirements-dev.txt
+```
+
+If you need to amend the dependencies of the project, then don't forget to add them to the ```requirements.in``` and/or ```requirements-dev.in``` files before.
+
+#### Conda
+
+If the name is correctly specified in the `environment.yml` file, then there is no need to run the following command from within the virtual environment:
+
+```
+conda env update --file environment.yml --prune
+```
+
+If you need to amend the dependencies of the project, then simply run:
+
+```
+$ conda activate envname  # Activate env
+(envname) $ conda install -c <library>
+```
+
+You should not forget to add this new dependence to `environment.yml`.
+
+### Before contributing
+
+Run:
+
+```bash
+pre-commit install
+```
+
 ## Table of Contents
 
 - [xhec-mlops-project-student](#xhec-mlops-project-student)
@@ -38,7 +127,7 @@ You can download the dataset on the [Kaggle page](https://www.kaggle.com/dataset
 
 ### Deliverables
 
-The deliverable of this project is a copy of this repository with the industrialization of the Abalone age prediction model. We expect to see: 
+The deliverable of this project is a copy of this repository with the industrialization of the Abalone age prediction model. We expect to see:
 
 1. a workflow to train a model using Prefect
 - The workflows to train the model and to make the inference (prediction of the age of abalone) are in separate modules and use Prefect `flow` and `task` objects
@@ -59,24 +148,24 @@ Each of your pull requests will be graded based on the following criteria:
   - use of docstrings and type hinting
 - **Formatting**
   - respect of clear code conventions
-  
+
   *P.S. you can use a linter and automatic code formatters to help you with that*
 
 - Proper **Functioning** of the code
   - the code must run without bugs
 
-Bseides the evaluation of the pull requests, we will also evaluate: 
+Bseides the evaluation of the pull requests, we will also evaluate:
 - **Reproducibility** and clarity of instructions to run the code (we will actually try to run your code)
-  - Having a clear README.md with 
+  - Having a clear README.md with
     - the context of the project
     - the name of the participants and their github users
     - the steps to recreate the Python environment
     - the instructions to run all parts of the code
-- Use of *Pull Requests* (see below) to coordinate your collaboration 
+- Use of *Pull Requests* (see below) to coordinate your collaboration
 
 ## Steps to reproduce to build the deliverable
 
-To help you with the structure and order of steps to perform in this project, we created different pull requests templates. 
+To help you with the structure and order of steps to perform in this project, we created different pull requests templates.
 Each branch in this repository corresponds to a future pull request and has an attached markdown file with the instructions to perform the tasks of the pull request.
 Each branch starts with a number.
 You can follow the order of the branches to build your project and collaborate.
@@ -102,11 +191,12 @@ You can follow the order of the branches to build your project and collaborate.
    > ```bash
    > git checkout branch_number_i
    > git pull origin master
-   > # At this point, you might have a VIM window opening, you can close it using the command ":wq" 
+   > # At this point, you might have a VIM window opening, you can close it using the command ":wq"
    > git push
    > ```
+    - Read and **follow** all the instructions in the the PR instructions file
     - Do as many commits as necessary on the branch_number_i to perform the task indicated in the corresponding markdown file
-    - Open a pull request from this branch to the main branch of your forked repository
+    - Open **A SINGLE** pull request from this branch to the main branch of your forked repository
     - Once done, merge the pull request in the main branch of your forked repository
 
 ### Pull requests in this project
