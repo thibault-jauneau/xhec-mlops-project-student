@@ -168,24 +168,78 @@ The training pipeline consists of the following tasks:
 3. `train_model`: Trains the linear regression model
 4. `save_model`: Saves the trained model as a pickle file```
 
-### Running with Docker
+## Running with Docker
 
 1. **Building the Docker image**
 
    To build the Docker image for this project, run the following command from the root directory of the project (where the Dockerfile is located):
 
    ```bash
-   docker build -f Dockerfile.app .
+   docker build -f Dockerfile.app -t abalone-prediction-app .
+
    ```
 2. **Running the Docker container**
 
    To run the app inside a Docker container, use the following command:
 
    ```bash
-   docker run -d -p 8000:8000 --name abalone-prediction abalone-prediction-app
+   docker run -d -p 0.0.0.0:8000:8001 -p 0.0.0.0:4200:4201 --name abalone-prediction abalone-prediction-app
    ```
 
+## Using the API
 
+### 1. Health Check
+
+You can verify that the API is running with:
+
+```bash
+curl http://localhost:8000/
+```
+
+Here is the expected response:
+```json
+{
+    "health_check": "OK",
+    "model_version": "1.0.0"
+}
+```
+
+### 2. Making Predictions
+
+You can predict the age of an abalone based on its physical measurements:
+
+```bash
+curl -X POST http://localhost:8000/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "length": 0.455,
+    "diameter": 0.365,
+    "height": 0.095,
+    "wholeweight": 0.514,
+    "shuckedweight": 0.2245,
+    "visceraweight": 0.101,
+    "shellweight": 0.15
+  }'
+```
+
+For that specific answer, here is the expected response:
+```json
+{
+    "age": 10
+}
+```
+
+### Input Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| length | float | Length in mm |
+| diameter | float | Diameter in mm |
+| height | float | Height in mm |
+| wholeweight | float | Whole weight in grams |
+| shuckedweight | float | Shucked weight in grams |
+| visceraweight | float | Viscera weight in grams |
+| shellweight | float | Shell weight in grams |
 
 ## Table of Contents
 
