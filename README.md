@@ -116,13 +116,56 @@ Run:
 pre-commit install
 ```
 
-## How to generate the pickle file with the model
+## Model Training with Prefect
 
-From the root folder, run in the terminal:
+### Prerequisites
 
+1. Start the Prefect server in a terminal:
+```bash
+prefect server start
 ```
-$ python src\modelling\main.py data\abalone.csv
+You can access the Prefect UI at http://localhost:4200
+
+2. Start a Prefect worker in another terminal:
+```bash
+prefect worker start -p default-agent-pool
 ```
+
+### Training the Model
+
+#### Single Training Run
+To train the model once and generate the pickle file, run from the root folder:
+```bash
+python src/modelling/main.py data/abalone.csv
+```
+This will:
+- Read the abalone dataset
+- Preprocess the data
+- Train a linear regression model
+- Save the model as a pickle file in `src/web_service/local_objects/model.pkl`
+
+You can monitor the training progress in the Prefect UI.
+
+#### Setting Up Automated Retraining
+To create a deployment that will automatically retrain the model weekly:
+```bash
+python src/modelling/main.py data/abalone.csv --create-deployment
+```
+This will create a scheduled deployment that runs every Sunday at midnight.
+
+### Monitoring
+
+In the Prefect UI (http://localhost:4200), you can:
+- View all flow runs and their status
+- Monitor task execution
+- Access logs and error messages
+- Manage deployments and schedules
+
+The training pipeline consists of the following tasks:
+1. `read_data`: Loads the abalone dataset
+2. `preprocess_data`: Prepares the data for training
+3. `train_model`: Trains the linear regression model
+4. `save_model`: Saves the trained model as a pickle file```
 
 ## Table of Contents
 
