@@ -112,8 +112,10 @@ graphviz==0.20.3
     # via prefect
 greenlet==3.1.1
     # via sqlalchemy
-griffe==1.5.1
-    # via prefect
+griffe==0.49.0
+    # via
+    #   -r requirements.in
+    #   prefect
 gunicorn==21.2.0
     # via mlflow
 h11==0.14.0
