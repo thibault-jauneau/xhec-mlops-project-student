@@ -1,7 +1,7 @@
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
 import mlflow
 import mlflow.sklearn
+from sklearn.linear_model import LinearRegression
+
 
 def train_model(X_train, y_train):
     """Train a Linear Regression model and log the model with MLflow."""
