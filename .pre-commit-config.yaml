@@ -21,12 +21,7 @@ repos:
         entry: isort
         types: [python]
         language: system
-      - id: ruff # TODO - remove this if you chose not to use ruff (must have one of ruff or flake8)
-        name: Linting (ruff)
-        entry: ruff
-        types: [python]
-        language: system
-      - id: flake8 # TODO - remove this if you chose not to use flake8 (must have one of ruff or flake8)
+      - id: flake8
         name: Linting (flake8)
         entry: flake8
         types: [python]
