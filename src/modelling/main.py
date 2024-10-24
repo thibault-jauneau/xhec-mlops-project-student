@@ -1,4 +1,9 @@
-"""Train a model using Prefect flows and tasks."""
+"""
+This module contains the main Prefect flow for training a machine learning model to predict the age of abalone based on physical characteristics.
+
+It also contains functionality to schedule regular retraining via Prefect Deployments.
+"""
+
 import argparse
 import os
 from pathlib import Path
@@ -19,7 +24,7 @@ os.environ["MLFLOW_TRACKING_URI"] = "http://localhost:5000"
 
 @task(name="read_data", retries=2)
 def read_data(trainset_path: Path) -> pd.DataFrame:
-    """Read training data from CSV file."""
+    """Read the training data from a CSV file."""
     return pd.read_csv(trainset_path)
 
 
@@ -27,16 +32,23 @@ def read_data(trainset_path: Path) -> pd.DataFrame:
 def save_model_task(
     model, path: str = "src/web_service/local_objects/model.pkl"
 ) -> None:
-    """Save the trained model to disk."""
+    """
+    Save the trained model to disk as a pickle file.
+
+    Args:
+        model: The trained model to be saved.
+        path (str): The file path where the model will be saved (default: 'src/web_service/local_objects/model.pkl').
+    """
     pickle_object(model, path)
 
 
 @flow(name="train_model_flow", log_prints=True)
 def train_flow(trainset_path: str) -> None:
-    """Execute the complete model training pipeline.
+    """
+    Execute the complete model training pipeline with data preprocessing and saving the model as a pickle.
 
     Args:
-        trainset_path: Path to the training dataset
+        trainset_path (str): Path to the CSV file containing the training dataset.
     """
     path = Path(trainset_path)
 
@@ -49,7 +61,11 @@ def train_flow(trainset_path: str) -> None:
 
 
 def create_deployment() -> None:
-    """Create a weekly deployment for the training flow."""
+    """
+    Create a Prefect deployment that schedules regular retraining of the model.
+
+    The deployment is scheduled to run weekly at midnight on Sunday using a Cron expression.
+    """
     deployment = Deployment.build_from_flow(
         flow=train_flow,
         name="weekly_model_training",

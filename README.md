@@ -167,6 +167,25 @@ The training pipeline consists of the following tasks:
 3. `train_model`: Trains the linear regression model
 4. `save_model`: Saves the trained model as a pickle file```
 
+### Running with Docker
+
+1. **Building the Docker image**
+
+   To build the Docker image for this project, run the following command from the root directory of the project (where the Dockerfile is located):
+
+   ```bash
+   docker build -f Dockerfile.app .
+
+2. **Running the Docker container**
+
+   To run the app inside a Docker container, use the following command:
+
+   ```bash
+   docker run -d -p 8000:8000 --name abalone-prediction abalone-prediction-app
+
+
+
+
 ## Table of Contents
 
 - [xhec-mlops-project-student](#xhec-mlops-project-student)
